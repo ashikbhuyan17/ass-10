@@ -1,0 +1,9 @@
+.productItem {
+    box-shadow: 5px 5px 15px rgb(243, 243, 243);
+    padding: 20px;
+    border-radius: 10px;
+    height: 100%;
+}
+.productItem img{
+    width: 100%;
+}

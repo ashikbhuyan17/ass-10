@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { useHistory } from 'react-router-dom';
 import { UserContext } from "../../App";
+import './CheckOut.css'
 
 const CheckOut = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext)
@@ -26,34 +28,35 @@ const CheckOut = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data);
+        // alert("checkout Successfully Done.... !!")
+
       })
   }
 
   return (
-    <div>
-      <h2>checkOut</h2>
-      {/* <h2>{product._id}</h2> */}
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Description</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>{product.name}</td>
-            <td>1</td>
-            <td>{product.price}</td>
-          </tr>
-
-        </tbody>
-      </table>
-
-      <button onClick={handleCheckOut} type="submit">CheckOut</button>
+    <div className="checkoutContainer">
+      {/* <Header></Header> */}
+      <div className="mainCheckBox">
+        <h1>Checkout</h1>
+        <div className="container checkoutBox">
+          <div className="aboutBox">
+            <h4>Description</h4>
+            <h4>Quantity</h4>
+            <h4>Price</h4>
+          </div>
+          <div className="productBox">
+            <h3>{product.name}</h3>
+            <h3>1</h3>
+            <h3>${product.price}</h3>
+          </div>
+          <div className="totalBox">
+            <h3>Total</h3>
+            <h3>${product.price}</h3>
+          </div>
+        </div>
+        {/* <button onClick={handleCheckOut} className="submitBtn" type="submit">Checkout</button> */}
+        <button onClick={handleCheckOut} type="button" class="btn btn-success m-2 p-1">CheckOut</button>
+      </div>
     </div>
   );
 };

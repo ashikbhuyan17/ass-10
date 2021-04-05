@@ -24,11 +24,13 @@ const Orders = () => {
                 orderItem.map(orderItem =>
 
 
-                    <div className="order">
-                        <h5>{orderItem.name}</h5>
-                        <img src={orderItem.imageURL} alt="Avatar" class="avatar"></img>
-                        <h5>{orderItem.wight}</h5>
-                        <h5>{orderItem.price}</h5>
+                    <div className="style">
+                        <div className="order">
+                            <h5>{orderItem.name}</h5>
+                            <img src={orderItem.imageURL} alt="Avatar" class="avatar"></img>
+                            <h5>{orderItem.wight}</h5>
+                            <h5>{orderItem.price}</h5>
+                        </div>
                     </div>
 
                 )

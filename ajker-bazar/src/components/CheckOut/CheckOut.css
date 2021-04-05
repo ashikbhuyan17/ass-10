@@ -1,0 +1,55 @@
+.checkoutContainer{
+    width: 80%;
+    margin: 0 auto;
+}
+/* .header{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+} */
+.mainCheckBox{
+    margin-top:50px ;
+}
+.mainCheckBox h1{
+    color: rgb(5, 9, 58);
+    font-weight: bold;
+}
+.checkoutBox{
+    box-shadow: 5px 5px 10px rgb(241, 241, 241);
+    padding: 20px 50px;
+    border-radius: 10px;
+}
+.aboutBox{
+    display: flex;
+    justify-content: space-between;
+    color:rgb(185, 185, 185);
+    border-bottom: 1px solid lightgrey;
+    padding: 10px;
+}
+.totalBox{
+    display: flex;
+    justify-content: space-between;
+    color:rgb(185, 185, 185);
+    border-top: 1px solid lightgrey;
+    padding: 10px;
+}
+.productBox{
+    display: flex;
+    justify-content: space-between;
+    color:rgb(0, 0, 0);
+    padding: 10px;
+}
+.totalBox{
+    color:rgb(0, 0, 0);
+}
+.logo{
+    width: 40%;
+}
+/* .submitBtn{
+    background-color: rgb(12, 204, 140);
+    color:#fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    margin-left: 86%;
+} */

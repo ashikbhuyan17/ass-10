@@ -1,14 +1,21 @@
 
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Form, FormControl, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import { UserContext } from '../../App';
+import '../Orders/Order.css'
 
 
 const Header = () => {
 
-    const handleInput = (event) => {
-        console.log(event.target.value);
-    }
+    // const [search, setSearch] = useState([])
+    // const handleInput = (event) => {
+    //     setSearch(event.target.value)
+    // }
+    // console.log(search);
+
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+    console.log(loggedInUser);
     return (
         <div>
             <div className="header">
@@ -51,17 +58,18 @@ const Header = () => {
                                 <Link to="/deals" class="nav-link active">
                                     <h4>Deals</h4>
                                 </Link>
-                                <Link to="/login" class="nav-link active">
-                                    <h4>Login</h4>
-                                </Link>
+                                {
+                                    loggedInUser.email ? <img src={loggedInUser.photoURL} alt="Avatar" class="avatar my-1"></img> : <Link to="/login" class="nav-link active"><h4>Login</h4></Link>
+
+                                }
                             </div>
                         </div>
                     </div>
                 </nav>
             </div>
-            <div style={{ margin: "50px" }}>
+            {/* <div style={{ margin: "50px" }}>
                 <input type="search" onChange={handleInput} class="form-control" name="" id="" placeholder="search...." />
-            </div>
+            </div> */}
         </div>
     );
 };

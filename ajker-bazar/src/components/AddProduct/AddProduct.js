@@ -44,29 +44,31 @@ const AddProduct = () => {
         <div>
             <Admin></Admin>
             <h2>Add product</h2>
-            <form onSubmit={handleSubmit(onSubmit)} class="row g-2">
-                <div class="col-md-6">
+            <div class="m-5">
+                <form onSubmit={handleSubmit(onSubmit)} class="row g-2">
+                    <div class="col-md-6">
 
-                    <input name="name" placeholder="Enter name" ref={register} type="text" class="form-control" id="name" />
-                </div>
+                        <input name="name" placeholder="Enter name" ref={register} type="text" class="form-control" id="name" />
+                    </div>
 
-                <div class="col-md-6">
+                    <div class="col-md-6">
 
-                    <input name="wight" ref={register} type="text" class="form-control" id="wight" placeholder="weight" />
-                </div>
+                        <input name="wight" ref={register} type="text" class="form-control" id="wight" placeholder="weight" />
+                    </div>
 
-                <div class="col-md-6">
+                    <div class="col-md-6">
 
-                    <input name="price" ref={register} type="text" class="form-control" id="price" placeholder="price" />
-                </div>
+                        <input name="price" ref={register} type="text" class="form-control" id="price" placeholder="price" />
+                    </div>
 
-                <div class="col-md-6">
+                    <div class="col-md-6">
 
-                    <input type="file" class="form-control" onChange={handleImageUpload} id="Photo" />
-                </div>
+                        <input type="file" class="form-control" onChange={handleImageUpload} id="Photo" />
+                    </div>
 
-                <input type="submit" class="col-md-1" />
-            </form>
+                    <input type="submit" class="col-md-1" />
+                </form>
+            </div>
         </div>
     );
 };

@@ -1,4 +1,4 @@
-.sidebar {
+/* .sidebar {
     margin: 0;
     padding: 0;
     width: 200px;
@@ -46,4 +46,18 @@
       text-align: center;
       float: none;
     }
-  }
+  } */
+
+
+  .productHeader{
+    width: 100%;
+    background-color: #213E38;
+}
+.navHeader{
+    display:inline-block;
+    color:#fff;
+    padding:15px 0;
+    margin: 0 20px;
+    font-weight: bold;
+    font-size: 20px;
+}

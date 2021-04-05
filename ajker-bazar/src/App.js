@@ -38,7 +38,7 @@ function App() {
                         <Orders />
                     </PrivateRoute>
                     <Route path="/admin">
-                        <Admin />
+                        <AddProduct />
                     </Route>
                     <Route path="/addProduct">
                         <AddProduct />
