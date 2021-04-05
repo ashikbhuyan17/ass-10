@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Header from '../Header/Header';
 import ShowProduct from '../ShowProduct/ShowProduct';
 import './Home.css'
 
@@ -24,7 +25,10 @@ const Home = () => {
         //         products.map(product => <ShowProduct product={product}></ShowProduct>)
         //     }
         // </div>
+
+
         <div>
+            <Header />
             {/* 
             <div style={{ margin: "50px" }}>
                 <input type="search" onChange={handleInput} class="form-control" name="" id="" placeholder="search...." />

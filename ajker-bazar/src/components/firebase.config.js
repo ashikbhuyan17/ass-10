@@ -1,9 +1,9 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyCgB0Sk8t24LAhEbWxlQWRED_Rqg7cnUU8",
-    authDomain: "auth-rider-17.firebaseapp.com",
-    projectId: "auth-rider-17",
-    storageBucket: "auth-rider-17.appspot.com",
-    messagingSenderId: "290244939251",
-    appId: "1:290244939251:web:9d0b0ccaca7463c9df1686"
+    apiKey: "AIzaSyAiblWTKAKJwt-Qoj3Y4JdUgcfITNw8mys",
+    authDomain: "ajker-bazar-mern.firebaseapp.com",
+    projectId: "ajker-bazar-mern",
+    storageBucket: "ajker-bazar-mern.appspot.com",
+    messagingSenderId: "38483806276",
+    appId: "1:38483806276:web:7f5a615f125f8a76af5411"
 };
 export default firebaseConfig;

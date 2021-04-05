@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Admin from '../Admin/Admin';
 import Delete from '../icons/delete.png'
 import Edit from '../icons/edit.png'
@@ -11,8 +12,9 @@ const ManageProduct = () => {
     }, [])
 
 
-    function deleteProduct(id, event) {
 
+    function deleteProduct(id, event) {
+        // const hidden = 
         console.log("delete", id)
         fetch(`http://localhost:9000/delete/${id}`, {
             method: 'DELETE'
@@ -21,7 +23,10 @@ const ManageProduct = () => {
             .then(result => {
                 console.log("deleted successfully")
                 if (result) {
-                    window.location.reload();
+                    // window.location.reload();
+                    console.log("display none");
+                    document.getElementById('delete').style.display = 'none'
+                    console.log(document.getElementById('delete').style.display = "none");
                 }
 
             })
@@ -49,12 +54,14 @@ const ManageProduct = () => {
 
                 {
                     product.map(pd =>
-                        <tbody>
+                        <tbody id="delete">
                             <tr>
                                 <th scope="row">{pd.name}</th>
                                 <td>{pd.wight}</td>
                                 <td>{pd.price}</td>
                                 <td><img src={Delete} onClick={() => deleteProduct(pd._id)} alt="" width="25px" class="m-2" />
+
+
                                     <img src={Edit} alt="" width="25px" data-bs-toggle="modal" data-bs-target="#exampleModal" /></td>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -83,6 +90,9 @@ const ManageProduct = () => {
                         </tbody>)
                 }
             </table>
+            <Link to="/home">
+                <button type="button" class="btn btn-warning my-5">Back To Home</button>
+            </Link>
         </div>
     );
 };

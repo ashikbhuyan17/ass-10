@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import Admin from "../Admin/Admin";
 
 
@@ -24,7 +25,9 @@ const AddProduct = () => {
             },
             body: JSON.stringify(eventDta)
         })
-            .then(res => console.log('ser sid res', res))
+            .then(res => {
+                window.location.reload()
+            })
     };
     const handleImageUpload = event => {
         console.log(event.target.files[0])
@@ -43,31 +46,36 @@ const AddProduct = () => {
     return (
         <div>
             <Admin></Admin>
-            <h2>Add product</h2>
+            {/* <h2>Add product</h2> */}
             <div class="m-5">
                 <form onSubmit={handleSubmit(onSubmit)} class="row g-2">
                     <div class="col-md-6">
 
-                        <input name="name" placeholder="Enter name" ref={register} type="text" class="form-control" id="name" />
+                        <input name="name" placeholder="Enter name" ref={register} type="text" class="form-control" id="name" required />
                     </div>
 
                     <div class="col-md-6">
 
-                        <input name="wight" ref={register} type="text" class="form-control" id="wight" placeholder="weight" />
+                        <input name="wight" ref={register} type="text" class="form-control" id="wight" placeholder="weight" required />
                     </div>
 
                     <div class="col-md-6">
 
-                        <input name="price" ref={register} type="text" class="form-control" id="price" placeholder="price" />
+                        <input name="price" ref={register} type="text" class="form-control" id="price" placeholder="price" required />
                     </div>
 
                     <div class="col-md-6">
 
-                        <input type="file" class="form-control" onChange={handleImageUpload} id="Photo" />
+                        <input type="file" class="form-control" onChange={handleImageUpload} id="Photo" required />
                     </div>
 
                     <input type="submit" class="col-md-1" />
                 </form>
+                <br /><br />
+
+                <Link to="/home">
+                    <button type="button" class="btn btn-warning">Back To Home</button>
+                </Link>
             </div>
         </div>
     );

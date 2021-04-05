@@ -7,6 +7,7 @@ import { Form, Button } from 'react-bootstrap';
 import firebaseConfig from "../firebase.config";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import Header from "../Header/Header";
 
 
 if (!firebase.apps.length) {
@@ -54,34 +55,30 @@ const Login = () => {
             })
     }
     // for facebook  signIn
-    const handleFbSignIn = () => {
-        firebase.auth()
-            .signInWithPopup(fbProvider)
-            .then((res) => {
-                const { displayName, email, photoURL } = res.user
-                const signedInUser = {
-                    isSignedIn: true,
-                    displayName: displayName,
-                    email: email,
-                    photoURL: photoURL,
-                }
-                setUser(signedInUser)
-                setLoggedInUser(signedInUser)
-                history.replace(from);
-            })
-            .catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // The email of the user's account used.
-                const email = error.email;
-                console.log(errorMessage);
-                // The firebase.auth.AuthCredential type that was used.
-                const credential = error.credential;
+    // const handleFbSignIn = () => {
+    //     firebase.auth()
+    //         .signInWithPopup(fbProvider)
+    //         .then((res) => {
+    //             const { displayName, email, photoURL } = res.user
+    //             const signedInUser = {
+    //                 isSignedIn: true,
+    //                 displayName: displayName,
+    //                 email: email,
+    //                 photoURL: photoURL,
+    //             }
+    //             setUser(signedInUser)
+    //             setLoggedInUser(signedInUser)
+    //             history.replace(from);
+    //         })
+    //         .catch((error) => {
+    //             const errorCode = error.code;
+    //             const errorMessage = error.message;
+    //             const email = error.email;
+    //             console.log(errorMessage);
+    //             const credential = error.credential;
 
-                // ...
-            });
-    }
+    //         });
+    // }
 
     console.log(user)
 
@@ -103,16 +100,7 @@ const Login = () => {
         }
     }
     const handleSubmit = (e) => {
-        // if (user.password !== user.confirm_password) {
-        //     const newUserInfo = { ...user }
-        //     newUserInfo.error = "password doesn't match"
-        //     setUser(newUserInfo)
 
-        // } else {
-        //     const newUserInfo = { ...user }
-        //     newUserInfo.error = "password  match"
-        //     setUser(newUserInfo)
-        // }
         if (newUser && user.email && user.password) {
 
             if (user.password !== user.confirm_password) {
@@ -143,27 +131,7 @@ const Login = () => {
                         console.log(errorMessage)
                     });
             }
-            // firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
-            //     .then((res) => {
-            //         const errorMessage = '';
-            //         const newUserInfo = { ...user }
-            //         newUserInfo.error = errorMessage
-            //         newUserInfo.success = true
-            //         setUser(newUserInfo)
-            //         console.log(errorMessage)
-            //         console.log(user.name)
-            //         updateUserName(user.name)
-            //         setLoggedInUser(newUserInfo)
-            //         history.replace(from)
-            //     })
-            //     .catch((error) => {
-            //         const errorMessage = error.message;
-            //         const newUserInfo = { ...user }
-            //         newUserInfo.error = errorMessage
-            //         newUserInfo.success = false
-            //         setUser(newUserInfo)
-            //         console.log(errorMessage)
-            //     });
+
 
         }
         if (!newUser && user.email && user.password) {
@@ -205,6 +173,7 @@ const Login = () => {
     console.log(user.displayName)
     return (
         <div>
+            <Header />
             <div class="d-flex justify-content-center m-5 ">
                 <Form onSubmit={handleSubmit} >
                     <div class="my-3">
@@ -215,19 +184,20 @@ const Login = () => {
                         {
                             newUser && <Form.Group controlId="formBasicName">
                                 <Form.Control type="text" name="name" onBlur={handleBlur} onFocus={handleBlur} placeholder="Name" required />
-                                {/* <input type="text" name="name" onBlur={handleBlur} onFocus={handleBlur} placeholder="your name" /> */}
                             </Form.Group>
                         }
-                    </Form.Group>
+                    </Form.Group> <br />
 
-                    <Form.Group controlId="formBasicEmail">
+                    <Form.Group controlId="formBasicEmail" >
                         <Form.Control type="email" name='email' onBlur={handleBlur} onFocus={handleBlur} placeholder="Email" required />
-                    </Form.Group>
+                    </Form.Group> <br />
                     <Form.Group controlId="formBasicEmail">
                         <Form.Control type="password" name="password" onBlur={handleBlur} placeholder="Password" required />
-                        <span id="passwordHelpBlock" class="form-text text-muted ">
-                            Your password must be 6-20 characters long, contain letters and numbers.
-                        </span>
+                        {
+                            newUser && <span id="passwordHelpBlock" class="form-text text-muted ">
+                                Your password must be 6-20 characters long, contain letters and numbers.
+                            </span>
+                        }
                     </Form.Group>
                     <Form.Group>
                         {
@@ -239,6 +209,9 @@ const Login = () => {
                         newUser && <Form.Group controlId="formBasicEmail">
                             <Form.Control type="password" name="confirm_password" onBlur={handleBlur} placeholder="Confirm Password" required />
                         </Form.Group>
+                    }
+                    {
+                        newUser && <div> <br /></div>
                     }
                     <Button type="submit" >{newUser ? "Sign up" : "Log In"}</Button>
                     <Form.Group>
@@ -252,19 +225,14 @@ const Login = () => {
                             <span class="p-4">Continue with Google</span>
                         </button>
                     </Form.Group>
-                    <Form.Group>
+                    {/* <Form.Group>
                         <button onClick={handleFbSignIn} type="button" class="btn btn-outline-success"><FontAwesomeIcon icon={faFacebook} />
                             <span class="p-3">Continue with Facebook</span>
                         </button>
-                    </Form.Group>
+                    </Form.Group> */}
 
                 </Form>
             </div>
-
-            {/* {
-                user.success ? <h2 style={{ color: 'green' }}> user {newUser ? 'created' : 'logged In'} successfully</h2> :
-                    <h5 style={{ color: 'red' }}> {user.error}</h5>
-            } */}
 
             <div class="text-center">
                 Copyright ©️ 2021 All rights reserved | This template is made with 💗 by Ashik !!

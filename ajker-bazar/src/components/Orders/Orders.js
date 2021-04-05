@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../App';
+import Header from '../Header/Header';
 import './Order.css'
 
 const Orders = () => {
@@ -20,6 +21,7 @@ const Orders = () => {
 
     return (
         <div>
+            <Header />
             {
                 orderItem.map(orderItem =>
 

@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { Redirect, useParams } from "react-router";
 import { useHistory } from 'react-router-dom';
 import { UserContext } from "../../App";
+import Header from "../Header/Header";
 import './CheckOut.css'
 
 const CheckOut = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext)
   const [product, setProduct] = useState({});
+  const history = useHistory()
   console.log(product)
   const { id } = useParams();
   console.log(id)
@@ -29,13 +31,17 @@ const CheckOut = () => {
       .then(data => {
         console.log(data);
         // alert("checkout Successfully Done.... !!")
+        history.push('/orders')
+        // history.replace('/orders')
+
+        // < Redirect to = "/" />
 
       })
   }
 
   return (
     <div className="checkoutContainer">
-      {/* <Header></Header> */}
+      <Header />
       <div className="mainCheckBox">
         <h1>Checkout</h1>
         <div className="container checkoutBox">
